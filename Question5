@@ -1,0 +1,24 @@
+<?php
+
+function stutterWord($word)
+{
+    // Get the first two letters of the word
+    $prefix = substr($word, 0, 2);
+
+    // Stutter the word with ellipsis and a space
+    $stutteredWord = $prefix . '...' . $prefix . '...' . $word;
+
+    // Add a question mark at the end
+    $stutteredWord .= '?';
+
+    return $stutteredWord;
+}
+
+// Example usage
+$originalWord = 'incredible';
+$stutteredWord = stutterWord($originalWord);
+
+echo "Original word: $originalWord\n";
+echo "Stuttered word: $stutteredWord\n";
+
+?>
