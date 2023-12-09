@@ -1,0 +1,38 @@
+<?php
+
+class PieSplitter
+{
+    private $totalSlices;
+    private $numRecipients;
+    private $slicesPerPerson;
+
+    public function __construct($totalSlices, $numRecipients, $slicesPerPerson)
+    {
+        $this->totalSlices = $totalSlices;
+        $this->numRecipients = $numRecipients;
+        $this->slicesPerPerson = $slicesPerPerson;
+    }
+
+    public function canSplitFairly()
+    {
+        $totalSlicesRequired = $this->numRecipients * $this->slicesPerPerson;
+
+        return $totalSlicesRequired <= $this->totalSlices;
+    }
+}
+
+// Example usage
+$totalSlices = 12;
+$numRecipients = 4;
+$slicesPerPerson = 2;
+
+$pieSplitter = new PieSplitter($totalSlices, $numRecipients, $slicesPerPerson);
+$canSplitFairly = $pieSplitter->canSplitFairly();
+
+if ($canSplitFairly) {
+    echo "It's possible to split the pie fairly!\n";
+} else {
+    echo "It's not possible to split the pie fairly.\n";
+}
+
+?>
