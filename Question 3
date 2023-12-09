@@ -1,0 +1,36 @@
+<?php
+
+class Farm
+{
+    private $numChickens;
+    private $numCows;
+    private $numPigs;
+
+    public function __construct($numChickens, $numCows, $numPigs)
+    {
+        $this->numChickens = $numChickens;
+        $this->numCows = $numCows;
+        $this->numPigs = $numPigs;
+    }
+
+    public function calculateTotalLegs()
+    {
+        $chickenLegs = $this->numChickens * 2;
+        $cowLegs = $this->numCows * 4;
+        $pigLegs = $this->numPigs * 4;
+
+        return $chickenLegs + $cowLegs + $pigLegs;
+    }
+}
+
+// Example usage
+$numChickens = 10;
+$numCows = 5;
+$numPigs = 8;
+
+$farm = new Farm($numChickens, $numCows, $numPigs);
+$totalLegs = $farm->calculateTotalLegs();
+
+echo "The total number of legs on the farm is: $totalLegs\n";
+
+?>
