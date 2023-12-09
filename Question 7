@@ -1,0 +1,22 @@
+<?php
+
+function calculatePizzaVolume($radius, $height)
+{
+    // Calculate the volume using the formula: π * radius^2 * height
+    $volume = M_PI * pow($radius, 2) * $height;
+
+    // Round the volume to the nearest integer, rounding up for numbers with .5 as the decimal part
+    $roundedVolume = round($volume);
+
+    return $roundedVolume;
+}
+
+// Example usage
+$radius = 5;
+$height = 10;
+
+$pizzaVolume = calculatePizzaVolume($radius, $height);
+
+echo "The volume of the pizza is: $pizzaVolume\n";
+
+?>
