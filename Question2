@@ -1,0 +1,48 @@
+//To find the majority element in an array, you can use the Boyer-Moore Voting Algorithm.
+
+<?php
+
+class MajorityElementFinder
+{
+    public function findMajorityElement($nums)
+    {
+        $count = 0;
+        $candidate = null;
+
+        foreach ($nums as $num) {
+            if ($count === 0) {
+                $candidate = $num;
+                $count = 1;
+            } else {
+                $count += ($num === $candidate) ? 1 : -1;
+            }
+        }
+
+        // Verify if the candidate is the majority element
+        $count = 0;
+        foreach ($nums as $num) {
+            if ($num === $candidate) {
+                $count++;
+            }
+        }
+
+        if ($count > count($nums) / 2) {
+            return $candidate;
+        } else {
+            return null; // No majority element
+        }
+    }
+}
+
+// Example usage
+$nums = [3, 3, 4, 2, 4, 4, 2, 4, 4];
+$majorityElementFinder = new MajorityElementFinder();
+$result = $majorityElementFinder->findMajorityElement($nums);
+
+if ($result !== null) {
+    echo "The majority element is: $result\n";
+} else {
+    echo "There is no majority element in the array.\n";
+}
+
+?>
