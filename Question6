@@ -1,0 +1,36 @@
+<?php
+
+function compress($chars)
+{
+    $result = '';
+    $count = 1;
+
+    for ($i = 0; $i < count($chars); $i++) {
+        if ($i < count($chars) - 1 && $chars[$i] === $chars[$i + 1]) {
+            // If the current character is the same as the next one, increase the count
+            $count++;
+        } else {
+            // If the current character is different or it's the last character in the array
+            if ($count > 1) {
+                // If there are more than one repeating character, append "x" + count
+                $result .= $chars[$i] . $count;
+            } else {
+                // If there is only one repeating character, append the character
+                $result .= $chars[$i];
+            }
+
+            // Reset the count for the next group of characters
+            $count = 1;
+        }
+    }
+
+    return $result;
+}
+
+// Example usage
+$characters = ["a", "a", "b", "b", "c", "c", "c"];
+$compressedString = compress($characters);
+
+echo "Compressed string: $compressedString\n";
+
+?>
